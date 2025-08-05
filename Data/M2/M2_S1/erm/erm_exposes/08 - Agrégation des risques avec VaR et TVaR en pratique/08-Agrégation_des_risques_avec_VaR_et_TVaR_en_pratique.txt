@@ -1,0 +1,130 @@
+#-------------------------------- Import Packages -------------------------------------------
+
+import numpy as np
+import scipy.stats as sc
+import matplotlib.pyplot as plt
+
+#---------------------------- Functions VaR and TVaR ----------------------------------------
+
+def VaR(X, alpha):
+    return np.quantile(X, alpha)
+
+def TVaR(X, alpha):
+    Y = []
+    for x in X:
+        if x > VaR(X,alpha):
+            Y.append(x)
+    return np.mean(Y)
+
+#---------------------------------- Simulations ---------------------------------------------
+
+def generer_couples_corr_normales(n, moyenne1, ecart_type1, moyenne2, ecart_type2, correlation):
+    cov_matrix = np.array([[ecart_type1**2, correlation*ecart_type1*ecart_type2],
+                           [correlation*ecart_type1*ecart_type2, ecart_type2**2]])
+    couples = np.random.multivariate_normal([moyenne1, moyenne2], cov_matrix, n)
+    return couples
+
+def aggreg_list(X, Y):
+    res = []
+    for k in range(0, len(X)):
+        res.append(X[k]+Y[k])
+    return res
+
+def bonus_diversification(List_Agreg, List_Somme):
+    res = []
+    for k in range(0, len(List_Agreg)):
+        res.append((List_Somme[k]-List_Agreg[k])/List_Somme[k])
+    return res
+
+# Exemple d'utilisation
+
+n = 500  # Nombre de couples à générer
+moyenne1 = 0
+ecart_type1 = 3
+moyenne2 = 0
+ecart_type2 = 0.1
+#correlation = 1/6  # Corrélation entre les variables
+
+"""
+couples = generer_couples_corr_normales(n, moyenne1, ecart_type1, moyenne2, ecart_type2, correlation)
+
+# Afficher les premiers couples
+print(couples[:10])  # Affiche les 10 premiers couples
+
+#VaR Loi 1
+print(VaR(couples[:,0], 0.995))
+
+#VaR Loi 2
+print(VaR(couples[:,1], 0.995))
+"""
+
+X_corr = np.linspace(-1, 1, 200)
+Somme_VaR = []
+VaR_agreg = []
+Somme_TVaR = []
+TVaR_agreg = []
+
+Somme_VaR_logN = []
+VaR_agreg_logN = []
+Somme_TVaR_logN = []
+TVaR_agreg_logN = []
+
+for corr in X_corr:
+    couples = generer_couples_corr_normales(n, moyenne1, ecart_type1, moyenne2, ecart_type2, corr)
+    couples_logN = np.exp(couples)
+    Somme_VaR.append(VaR(couples[:,0], 0.8) + VaR(couples[:,1], 0.8))
+    Somme_TVaR.append(TVaR(couples[:,0], 0.8) + TVaR(couples[:,1], 0.8))
+    VaR_agreg.append(VaR(aggreg_list(couples[:,0], couples[:,1]), 0.8))
+    TVaR_agreg.append(TVaR(aggreg_list(couples[:,0], couples[:,1]), 0.8))
+    Somme_VaR_logN.append(VaR(couples_logN[:,0], 0.8) + VaR(couples_logN[:,1], 0.8))
+    Somme_TVaR_logN.append(TVaR(couples_logN[:,0], 0.8) + TVaR(couples_logN[:,1], 0.8))
+    VaR_agreg_logN.append(VaR(aggreg_list(couples_logN[:,0], couples_logN[:,1]), 0.8))
+    TVaR_agreg_logN.append(TVaR(aggreg_list(couples_logN[:,0], couples_logN[:,1]), 0.8))
+
+plt.plot(X_corr, Somme_VaR, label="Somme des VaRs")
+plt.plot(X_corr, VaR_agreg, label="VaRs aggrégées")
+plt.xlabel("Corrélation")
+plt.ylabel("Valeur VaRs")
+plt.legend()
+plt.show()
+
+plt.plot(X_corr, Somme_TVaR, label="Somme des TVaRs")
+plt.plot(X_corr, TVaR_agreg, label="TVaRs aggrégées")
+plt.xlabel("Corrélation")
+plt.ylabel("Valeur TVaRs")
+plt.legend()
+plt.show()
+
+Bonus_VaR = bonus_diversification(VaR_agreg, Somme_VaR)
+Bonus_TVaR = bonus_diversification(TVaR_agreg, Somme_TVaR)
+
+plt.plot(X_corr, Bonus_VaR, label="VaR")
+plt.plot(X_corr, Bonus_TVaR, label="TVaR")
+plt.xlabel("Corrélation")
+plt.ylabel("Bonus diversification")
+plt.legend()
+plt.show()
+
+plt.plot(X_corr, Somme_VaR_logN, label="Somme des VaRs")
+plt.plot(X_corr, VaR_agreg_logN, label="VaRs aggrégées")
+plt.xlabel("Corrélation")
+plt.ylabel("Valeur VaRs")
+plt.legend()
+plt.show()
+
+plt.plot(X_corr, Somme_TVaR_logN, label="Somme des TVaRs")
+plt.plot(X_corr, TVaR_agreg_logN, label="TVaRs aggrégées")
+plt.xlabel("Corrélation")
+plt.ylabel("Valeur TVaRs")
+plt.legend()
+plt.show()
+
+Bonus_VaR_logN = bonus_diversification(VaR_agreg_logN, Somme_VaR_logN)
+Bonus_TVaR_logN = bonus_diversification(TVaR_agreg_logN, Somme_TVaR_logN)
+
+plt.plot(X_corr, Bonus_VaR_logN, label="VaR")
+plt.plot(X_corr, Bonus_TVaR_logN, label="TVaR")
+plt.xlabel("Corrélation")
+plt.ylabel("Bonus diversification")
+plt.legend()
+plt.show()
