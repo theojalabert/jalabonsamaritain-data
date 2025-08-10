@@ -1,0 +1,708 @@
+<!-- Master El Karoui -->
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/logo_isfa.png" type="image/png">
+    <title>JalabonSamaritain</title>
+    <style>
+        /* Styles généraux */
+        body {
+            font-family: Calibri, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+		.sidebar {
+		    position: fixed;
+			top: 122px;
+		    left: 0;
+		    width: 200px;
+		    height: 80%;  /* Définissez la hauteur que vous voulez pour la barre latérale */
+		    background-color: #f4f4f4;
+		    padding: 15px;
+		    border-right: 1px solid #ddd;
+		    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+		    overflow-y: auto; /* Cela permet le défilement vertical lorsque le contenu dépasse la hauteur */
+		}
+
+		.sidebar ul {
+		    list-style-type: none;
+		    padding: 0;
+		}
+
+		.sidebar ul li {
+		    margin-bottom: 10px;
+		}
+
+		.sidebar ul li a {
+		    text-decoration: none;
+		    color: #333;
+		    display: block;
+		    padding: 5px 10px;
+		    transition: background-color 0.3s;
+		}
+
+		.sidebar ul li a:hover {
+		    background-color: #ddd;
+		}
+
+		.detail {
+		    text-indent: 10px;
+		}
+
+		.ancre-decalage:before {
+		  content: "";
+		  display: block;
+		  height: 150px; /* Hauteur de votre en-tête basée sur "top: 122px" de votre `.sidebar` */
+		  margin-top: -150px; /* Même hauteur mais négative */
+		  visibility: hidden;
+		}
+
+		.indent_bloc{
+			margin-left: -10px;
+		}
+
+		.font-size_matieres{
+			font-size: 13px;
+		}
+
+		.bold {
+			font-weight: bold;
+		}
+
+
+        /* En-tête */
+        header {
+            background-color: #235A8C;
+            color: #fff;
+            text-align: center;
+            padding: 0.5rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 2;
+        }
+
+        header a{
+        	color: white;
+        }
+
+        header a:hover{
+        	color: antiquewhite;
+        }
+
+        /* Barre de navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #0E76A8;
+            padding: 0.5rem 0;
+            position: fixed;
+            top: 90px;
+            width: 100%;
+            z-index: 2;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 1rem;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        nav a:hover {
+            
+            color: white;
+            transform: scale(1.1);
+        }
+
+		header, nav {
+		    width: 100%;
+		}
+
+        /* Contenu général */
+        .container_global {
+            width: 80%;
+            margin: 2rem auto;
+            margin-left: 230px; /* Ajout d'une marge à gauche */
+            padding: 1rem;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            margin-top: 120px;
+        }
+
+			table {
+			    border-collapse: collapse; 
+			    width: 100%; 
+			}
+
+			td, th {
+			    border: 1px solid #ddd;
+			    padding: 8px; 
+			}
+
+			th {
+			    background-color: #f2f2f2; 
+			}
+
+			/* Spécifie la largeur de chaque colonne */
+			.col1 {
+			    width: 40%;
+			}
+
+			.col2 {
+			    width: 30%;
+			}
+
+			.col3 {
+			    width: 30%;
+			}
+		.download_icon{
+		    width: 20px;
+		    vertical-align: middle;
+		    margin-bottom: 10px;
+		    transition: transform 0.3s;
+		}
+
+		.download_icon:hover{
+			transform: scale(1.1);
+			filter: invert(34%) sepia(92%) saturate(1417%) hue-rotate(175deg) brightness(98%) contrast(101%);
+		}
+
+
+
+        /* Contenu dans matière */
+        .container {
+            width: 80%;
+            margin: 1rem auto;
+            margin-left: 50px; /* Ajout d'une marge à gauche */
+            padding: 1.5rem;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+		.premium {
+		    color: #DAA520; /* Doré intense */
+		    font-size: 1.05em;
+		    transition: color 0.3s ease;
+		}
+
+		.premium:hover {
+		    color: #b8860b; /* Doré foncé au survol */
+		    text-decoration: underline;
+		}
+
+        h1 {
+            text-align: center;
+        }
+
+		a {
+/*		    font-weight: bold;*/
+		    text-decoration: none;
+		    color: blue;  /* Juste pour être sûr, forçons la couleur à bleu */
+		}
+
+		a:hover {
+    		color: purple;
+		}
+
+
+        /* Pied de page */
+        footer {
+            background-color: #235A8C;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header class="nom_site">
+        <h1><a href="/index.html">JalabonSamaritain</a></h1>
+    </header>
+
+    <nav>
+        <a href="/index.html">Accueil</a>
+        <a href="about.html">À propos</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="sidebar">
+    	<ul>
+    		<li class="indent_bloc bold"><a href="#livres_entretien">Livres entretiens</a></li>
+    		<li class="indent_bloc bold"><a href="#bloc_probas">Bloc Probabilités</a></li>
+        	<li><a href="#proba_num">Probabilités Numériques</a></li>
+        	<li><a href="#controle_sto"> Contrôle stochastique</a></li>
+        	<li><a href="#processus_diffusion"> Processus de diffusion</a></li>
+        	<li><a href="#machine_deep_learning"> Machine & Deep Learning</a></li>
+
+        	<br>
+
+        	<li class="indent_bloc bold"><a href="#bloc_finance">Bloc Finance</a></li>
+        	<li><a href="#econometrie_HFT"> Économétrie / HFT</a></li>
+        	<li><a href="#modelisation_sto"> Modélisation stochastique</a></li>
+        	<li><a href="#modeles_taux"> Modèles de taux</a></li>
+        	<li><a href="#marches_theorie_fin"> Marchés financiers et Théorie financière</a></li>
+        	<li><a href="#mesures_risque_valeurs_extremes"> Mesures de risque et valeurs extrêmes</a></li>
+        	<li><a href="#modeles_sauts"> Modèles de sauts</a></li>
+        	<li><a href="#regulation"> Régulation</a></li>
+
+        	<br>
+
+        	<!-- Autres matières ici -->
+    	</ul>
+	</div>
+
+
+	<div class="container_global">
+
+
+    <h1>
+    	Master El Karoui 
+    </h1>
+
+	<!-- Livres pour préparer les entretiens -->
+	<ul>
+	  <h3 id="livres_entretien" class="ancre-decalage">📘 Livres utiles pour les entretiens quantitatifs</h3>
+	</ul>
+
+	<div class="container">
+	  <p>Voici une sélection de livres qui m'ont semblé particulièrement utiles pour préparer les entretiens en finance quantitative. N'hésitez pas à en parcourir plusieurs selon votre profil (maths, coding, brainteasers, etc.).</p>
+	  <p>Toutefois, il est particulièrement important, selon mon expérience, de maîtriser les 4 premiers livres.</p>
+	  
+	  <ul>
+	    <li><a href="/Data_EK/interview_books/bouzoubaa.pdf" target="_blank" rel="noopener noreferrer" class="premium"><strong>Bouzoubaa</strong> – Exotic Options and Hybrids <em> A Guide to Structuring, Pricing and Trading.</em> </a></li>
+	    <li><a href="/Data_EK/interview_books/red_book.pdf" target="_blank" rel="noopener noreferrer" class="premium"><strong>Red Book</strong> – Heard on The Street: <em>Quantitative Questions from Wall Street Job Interviews.</em></a></li>
+	    <li><a href="/Data_EK/interview_books/green_book.pdf" target="_blank" rel="noopener noreferrer" class="premium"><strong>Green Book</strong> – <em> A Practical Guide to Quantitative Finance Interviews.</em></a></li>
+	    <li><a href="/Data_EK/interview_books/50_challenges_proba.pdf" target="_blank" rel="noopener noreferrer" class="premium"><strong>Blue Book</strong> – <em>50 Challenging Problems in Probability</em></a></li>
+	    <li><a href="/Data_EK/interview_books/cut_the_knot.pdf" target="_blank" rel="noopener noreferrer"><strong>Cut-the-Knot</strong> – <em>Probability Riddles</em></a></li>
+	    <li><a href="/Data_EK/interview_books/FAQ_of_Quant_Finance.pdf" target="_blank" rel="noopener noreferrer"><strong> The Wilmott</strong> – <em> Frequently Asked Questions in Quantitative Finance.</em></a></li>
+	    <li><a href="/Data_EK/interview_books/prepare_coding_interviews.pdf" target="_blank" rel="noopener noreferrer"><em>Cracking the Coding Interview</em></a></li>
+	    <li><a href="/Data_EK/interview_books/quant_job_interview_QA.pdf" target="_blank" rel="noopener noreferrer"><em>Quant Job Interview – Questions and Answers</em></a></li>
+	  </ul>
+	</div>
+
+    <ul>
+    	<!-- Bloc Probas -->
+        <h2 id="bloc_probas" class="ancre-decalage">
+        	Bloc Probabilités
+        </h2>
+
+        	<!-- Probas num -->
+			<ul>
+			    <h3 id="proba_num" class="ancre-decalage">Probabilités numériques (Gilles Pagès x Vincent Lemaire)</h3>
+			</ul>
+
+			<div class="container">
+			    <li><b>Cours :</b></li>
+			    <ul>
+			        <li><a href="/Data_EK/S1/probas/proba_num/proba_num_cours/proba_num_cours.pdf" target="_blank" rel="noopener noreferrer">Cours principal</a></li>
+			        <li><a href="/Data_EK/S1/probas/proba_num/proba_num_cours/proba_num_poly.pdf" target="_blank" rel="noopener noreferrer">Poly de cours</a></li>
+			        <li><a href="/Data_EK/S1/probas/proba_num/proba_num_cours/proba_num_fiche_QMC.pdf" target="_blank" rel="noopener noreferrer">Fiche QMC</a></li>
+			        <li><a href="/Data_EK/S1/probas/proba_num/proba_num_cours/proba_num_livre_pages.pdf" target="_blank" rel="noopener noreferrer">Livre de Gilles Pagès</a></li>
+			    </ul>
+
+			    <br>
+
+			    <li><b>Travaux dirigés :</b></li>
+			    <ul>
+			        <li><a href="/Data_EK/S1/probas/proba_num/proba_num_TD/proba_num_TD1_projets_exos.pdf" target="_blank" rel="noopener noreferrer">TD1 – Projets & Exercices</a></li>
+			        <li><a href="/Data_EK/S1/probas/proba_num/proba_num_TD/proba_num_TD2.pdf" target="_blank" rel="noopener noreferrer">TD2</a></li>
+			    </ul>
+
+			    <br>
+
+			    <li><b>Nano-projets et annales :</b></li>
+			    <ul>
+			        <li><a href="/Data_EK/S1/probas/proba_num/proba_num_nano_projets/Nano_Projet_1_Theo_JALABERT.html" target="_blank" rel="noopener noreferrer">Nano Projet 1 (HTML)</a></li>
+			        <li><a href="/Data_EK/S1/probas/proba_num/proba_num_nano_projets/Nano_Projet_1_Theo_JALABERT.ipynb" download>Nano Projet 1 (Notebook)</a></li>
+			        <li><a href="/Data_EK/S1/probas/proba_num/proba_num_nano_projets/Nano_Projet_3_Theo_JALABERT.html" target="_blank" rel="noopener noreferrer">Nano Projet 3 (HTML)</a></li>
+			        <li><a href="/Data_EK/S1/probas/proba_num/proba_num_nano_projets/Nano_Projet_3_Theo_JALABERT.ipynb" download>Nano Projet 3 (Notebook)</a></li>
+			        <li><a href="/Data_EK/S1/probas/proba_num/proba_num_annales/proba_num_annale_2008_rattrapages.pdf" target="_blank" rel="noopener noreferrer">Annale 2008 rattrapages</a></li>
+					<li><a href="/Data_EK/S1/probas/proba_num/proba_num_annales/proba_num_annale_2008.pdf" target="_blank" rel="noopener noreferrer">Annale 2008</a></li>
+					<li><a href="/Data_EK/S1/probas/proba_num/proba_num_annales/proba_num_annale_2009_rattrapages.pdf" target="_blank" rel="noopener noreferrer">Annale 2009 rattrapages</a></li>
+					<li><a href="/Data_EK/S1/probas/proba_num/proba_num_annales/proba_num_annale_2009.pdf" target="_blank" rel="noopener noreferrer">Annale 2009</a></li>
+					<li><a href="/Data_EK/S1/probas/proba_num/proba_num_annales/proba_num_annale_2010_rattrapages.pdf" target="_blank" rel="noopener noreferrer">Annale 2010 rattrapages</a></li>
+					<li><a href="/Data_EK/S1/probas/proba_num/proba_num_annales/proba_num_annale_2010.pdf" target="_blank" rel="noopener noreferrer">Annale 2010</a></li>
+					<li><a href="/Data_EK/S1/probas/proba_num/proba_num_annales/proba_num_annale_2011.pdf" target="_blank" rel="noopener noreferrer">Annale 2011</a></li>
+					<li><a href="/Data_EK/S1/probas/proba_num/proba_num_annales/proba_num_annale_2012_rattrapages.pdf" target="_blank" rel="noopener noreferrer">Annale 2012 rattrapages</a></li>
+					<li><a href="/Data_EK/S1/probas/proba_num/proba_num_annales/proba_num_annale_2013.pdf" target="_blank" rel="noopener noreferrer">Annale 2013</a></li>
+					<li><a href="/Data_EK/S1/probas/proba_num/proba_num_annales/proba_num_annale_2015.pdf" target="_blank" rel="noopener noreferrer">Annale 2015</a></li>
+					<li><a href="/Data_EK/S1/probas/proba_num/proba_num_annales/proba_num_annale_2022_rattrapages.pdf" target="_blank" rel="noopener noreferrer">Annale 2022 rattrapages</a></li>
+					<li><a href="/Data_EK/S1/probas/proba_num/proba_num_annales/proba_num_annale_2022.pdf" target="_blank" rel="noopener noreferrer">Annale 2022</a></li>
+					<li><a href="/Data_EK/S1/probas/proba_num/proba_num_annales/proba_num_annale_2023.pdf" target="_blank" rel="noopener noreferrer">Annale 2023</a></li>
+					<li><a href="/Data_EK/S1/probas/proba_num/proba_num_annales/proba_num_annale_2024.pdf" target="_blank" rel="noopener noreferrer">Annale 2024</a></li>
+					<li><a href="/Data_EK/S1/probas/proba_num/proba_num_annales/proba_num_annale_2025.pdf" target="_blank" rel="noopener noreferrer">Annale 2025</a></li>
+			        <li><a href="/Data_EK/S1/probas/proba_num/proba_num_annales/proba_num_annales.pdf" target="_blank" rel="noopener noreferrer">Recueil de corrections d'annales</a></li>
+			    </ul>
+			</div>
+
+
+	        <!-- Contrôle sto -->
+			<ul>
+			    <h3 id="controle_sto" class="ancre-decalage">Convexité, optimisation et contrôle stochastique (Idris Kharroubi)</h3>
+			</ul>
+
+			<div class="container">
+			    <li><b>Cours :</b></li>
+			    <ul>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_cours/controle_sto_cours.pdf" target="_blank" rel="noopener noreferrer">Cours principal</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_cours/controle_sto_poly.pdf" target="_blank" rel="noopener noreferrer">Poly complet</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_cours/controle_sto_poly_touzi.pdf" target="_blank" rel="noopener noreferrer">Poly Touzi</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_cours/controle_sto_poly_pham.pdf" target="_blank" rel="noopener noreferrer">Poly Pham</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_cours/controle_sto_poly_chap1.pdf" target="_blank" rel="noopener noreferrer">Chapitre 1</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_cours/controle_sto_poly_chap2.pdf" target="_blank" rel="noopener noreferrer">Chapitre 2</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_cours/controle_sto_poly_chap3.pdf" target="_blank" rel="noopener noreferrer">Chapitre 3</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_cours/controle_sto_poly_chap4.pdf" target="_blank" rel="noopener noreferrer">Chapitre 4</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_cours/controle_sto_poly_chap5.pdf" target="_blank" rel="noopener noreferrer">Chapitre 5</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_cours/controle_sto_poly_chap6.pdf" target="_blank" rel="noopener noreferrer">Chapitre 6</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_cours/controle_sto_poly_chap7.pdf" target="_blank" rel="noopener noreferrer">Chapitre 7</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_cours/controle_sto_poly_chap8.pdf" target="_blank" rel="noopener noreferrer">Chapitre 8</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_cours/controle_sto_poly_chap9.pdf" target="_blank" rel="noopener noreferrer">Chapitre 9</a></li>
+			    </ul>
+
+			    <br>
+
+			    <li><b>Fiches :</b></li>
+			    <ul>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_cours/controle_sto_fiche.pdf" target="_blank" rel="noopener noreferrer">Fiche récapitulative</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_cours/controle_sto_fiche_EDS_et_controle.pdf" target="_blank" rel="noopener noreferrer">Fiche EDS & contrôle</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_cours/controle_sto_fiche_optimisation_sto.pdf" target="_blank" rel="noopener noreferrer">Fiche optimisation stochastique</a></li>
+			    </ul>
+
+			    <br>
+
+			    <li><b>Travaux dirigés :</b></li>
+			    <ul>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_TD/controle_sto_TD1.pdf" target="_blank" rel="noopener noreferrer">TD1</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_TD/controle_sto_TD1_2024.pdf" target="_blank" rel="noopener noreferrer">TD1 (version 2024)</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_TD/controle_sto_TD2.pdf" target="_blank" rel="noopener noreferrer">TD2</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_TD/controle_sto_TD2_2024.pdf" target="_blank" rel="noopener noreferrer">TD2 (version 2024)</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_TD/controle_sto_TD3.pdf" target="_blank" rel="noopener noreferrer">TD3</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_TD/controle_sto_TD4.pdf" target="_blank" rel="noopener noreferrer">TD4</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_TD/controle_sto_TD5.pdf" target="_blank" rel="noopener noreferrer">TD5</a></li>
+			    </ul>
+
+			    <br>
+
+			    <li><b>Annales :</b></li>
+			    <ul>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_annales/controle_sto_annale_2024.pdf" target="_blank" rel="noopener noreferrer">Annale 2024</a></li>
+			        <li><a href="/Data_EK/S1/probas/controle_sto/controle_sto_annales/controle_sto_annale_2025.pdf" target="_blank" rel="noopener noreferrer">Annale 2025</a></li>
+			    </ul>
+			</div>
+
+
+	        <!-- Processus de diffusion -->
+			<ul>
+			    <h3 id="processus_diffusion" class="ancre-decalage">Introduction aux processus de diffusion (Lorenzo Zambotti)</h3>
+			</ul>
+
+			<div class="container">
+			    <li><b>Cours :</b></li>
+			    <ul>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_cours/processus_diffusion_cours.pdf" target="_blank" rel="noopener noreferrer">Cours principal</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_cours/processus_diffusion_poly.pdf" target="_blank" rel="noopener noreferrer">Poly de cours</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_cours/processus_diffusion_fiche.pdf" target="_blank" rel="noopener noreferrer">Fiche résumé</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_cours/proba_num_fiche_UI_Convergence_Martingales.pdf" target="_blank" rel="noopener noreferrer">Fiche UI & convergence de martingales</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_cours/proba_num_fiche_sensibilites.pdf" target="_blank" rel="noopener noreferrer">Fiche sensibilités</a></li>
+			    </ul>
+
+			    <br>
+
+			    <li><b>Travaux dirigés :</b></li>
+			    <ul>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_TD/processus_diffusion_TD0.pdf" target="_blank" rel="noopener noreferrer">TD0</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_TD/processus_diffusion_TD1.pdf" target="_blank" rel="noopener noreferrer">TD1</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_TD/processus_diffusion_TD2.pdf" target="_blank" rel="noopener noreferrer">TD2</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_TD/processus_diffusion_TD3.pdf" target="_blank" rel="noopener noreferrer">TD3</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_TD/processus_diffusion_TD4.pdf" target="_blank" rel="noopener noreferrer">TD4</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_TD/processus_diffusion_TD5.pdf" target="_blank" rel="noopener noreferrer">TD5</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_TD/processus_diffusion_TD6.pdf" target="_blank" rel="noopener noreferrer">TD6</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_TD/processus_diffusion_TD7.pdf" target="_blank" rel="noopener noreferrer">TD7</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_TD/processus_diffusion_solutions.pdf" target="_blank" rel="noopener noreferrer">Solutions</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_TD/processus_diffusion_corrections.pdf" target="_blank" rel="noopener noreferrer">Corrections</a></li>
+			    </ul>
+
+			    <br>
+
+			    <li><b>Annales :</b></li>
+			    <ul>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_annales/processus_diffusion_annales.pdf" target="_blank" rel="noopener noreferrer">Annales diverses</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_annales/processus_diffusion_annale_2023.pdf" target="_blank" rel="noopener noreferrer">Annale 2023</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_annales/processus_diffusion_annale_2024.pdf" target="_blank" rel="noopener noreferrer">Annale 2024</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_annales/processus_diffusion_annale_2025.pdf" target="_blank" rel="noopener noreferrer">Annale 2025</a></li>
+			        <li><a href="/Data_EK/S1/probas/processus_diffusion/processus_diffusion_annales/processus_diffusion_annales_elie.pdf" target="_blank" rel="noopener noreferrer">Annales corrigées par Elie</a></li>
+			    </ul>
+			</div>
+
+
+			<!-- Machine Learning et Deep Learning -->
+			<ul>
+			    <h3 id="machine_deep_learning" class="ancre-decalage">Machine Learning, réseaux de neurones et Deep Learning (Patrick Gallinari x Benedikt Wilbertz)</h3>
+			</ul>
+
+			<div class="container">
+			    <li><b>Cours :</b></li>
+			    <ul>
+			        <li><a href="/Data_EK/S1/probas/machine_deep_learning/machine_deep_learning_cours/machine_learning_cours_week1.pdf" target="_blank" rel="noopener noreferrer">Machine Learning - Week 1</a></li>
+			        <li><a href="/Data_EK/S1/probas/machine_deep_learning/machine_deep_learning_cours/machine_learning_cours_week2.pdf" target="_blank" rel="noopener noreferrer">Machine Learning - Week 2</a></li>
+			        <li><a href="/Data_EK/S1/probas/machine_deep_learning/machine_deep_learning_cours/machine_learning_cours_week3.pdf" target="_blank" rel="noopener noreferrer">Machine Learning - Week 3</a></li>
+			        <li><a href="/Data_EK/S1/probas/machine_deep_learning/machine_deep_learning_cours/machine_learning_cours_week4.pdf" target="_blank" rel="noopener noreferrer">Machine Learning - Week 4</a></li>
+			        <li><a href="/Data_EK/S1/probas/machine_deep_learning/machine_deep_learning_cours/deep_learning_cours.pdf" target="_blank" rel="noopener noreferrer">Deep Learning - Cours</a></li>
+			        <li><a href="/Data_EK/S1/probas/machine_deep_learning/machine_deep_learning_cours/machine_deep_learning_fiche_ML.pdf" target="_blank" rel="noopener noreferrer">Fiche récapitulative ML</a></li>
+			    </ul>
+
+			    <br>
+
+			    <li><b>Annales :</b></li>
+			    <ul>
+			        <li><a href="/Data_EK/S1/probas/machine_deep_learning/machine_deep_learning_annales/machine_deep_learning_annales_ML.pdf" target="_blank" rel="noopener noreferrer">Annales Machine Learning</a></li>
+			        <li><a href="/Data_EK/S1/probas/machine_deep_learning/machine_deep_learning_annales/machine_deep_learning_annales_deep.pdf" target="_blank" rel="noopener noreferrer">Annales Deep Learning</a></li>
+			        <li><a href="/Data_EK/S1/probas/machine_deep_learning/machine_deep_learning_annales/machine_deep_learning_annale_deep_2022.pdf" target="_blank" rel="noopener noreferrer">Annale Deep Learning 2022</a></li>
+			        <li><a href="/Data_EK/S1/probas/machine_deep_learning/machine_deep_learning_annales/machine_deep_learning_annale_deep_2023.pdf" target="_blank" rel="noopener noreferrer">Annale Deep Learning 2023</a></li>
+			        <li><a href="/Data_EK/S1/probas/machine_deep_learning/machine_deep_learning_annales/machine_deep_learning_annale_ML_2023.pdf" target="_blank" rel="noopener noreferrer">Annale Machine Learning 2023</a></li>
+			        <li><a href="/Data_EK/S1/probas/machine_deep_learning/machine_deep_learning_annales/machine_deep_learning_annale_2024.pdf" target="_blank" rel="noopener noreferrer">Annale 2024</a></li>
+			        <li><a href="/Data_EK/S1/probas/machine_deep_learning/machine_deep_learning_annales/machine_deep_learning_annale_questions_ML.docx" target="_blank" rel="noopener noreferrer">Questions d’annales (format .docx)</a></li>
+			    </ul>
+			</div>
+
+
+		<!-- Bloc Finance -->
+
+        <h2 id="bloc_finance" class="ancre-decalage">
+        	Bloc Finance 
+        </h2>
+
+        	<!-- Econometrie HFT -->
+			<ul>
+			  <h3 id="econometrie_HFT" class="ancre-decalage">Économétrie et Trading Haute Fréquence (Mathieu Rosenbaum)</h3>
+			</ul>
+
+			<div class="container">
+			  <li><b>Cours :</b></li>
+			  <ul>
+			    <li><a href="/Data_EK/S1/finance/econometrie_HFT/econometrie_HFT_cours/HFT_slides_seance1.pdf" target="_blank" rel="noopener noreferrer">Slides Séance 1</a></li>
+			    <li><a href="/Data_EK/S1/finance/econometrie_HFT/econometrie_HFT_cours/HFT_slides_seance1.2.pdf" target="_blank" rel="noopener noreferrer">Slides Séance 1.2</a></li>
+			    <li><a href="/Data_EK/S1/finance/econometrie_HFT/econometrie_HFT_cours/HFT_slides_seance2.pdf" target="_blank" rel="noopener noreferrer">Slides Séance 2</a></li>
+			    <li><a href="/Data_EK/S1/finance/econometrie_HFT/econometrie_HFT_cours/HFT_slides_seance3.pdf" target="_blank" rel="noopener noreferrer">Slides Séance 3</a></li>
+			    <li><a href="/Data_EK/S1/finance/econometrie_HFT/econometrie_HFT_cours/HFT_slides_seance4.pdf" target="_blank" rel="noopener noreferrer">Slides Séance 4</a></li>
+			    <li><a href="/Data_EK/S1/finance/econometrie_HFT/econometrie_HFT_cours/HFT_slides_seance5.pdf" target="_blank" rel="noopener noreferrer">Slides Séance 5</a></li>
+			    <li><a href="/Data_EK/S1/finance/econometrie_HFT/econometrie_HFT_cours/HFT_fiche.pdf" target="_blank" rel="noopener noreferrer">Fiche HFT</a></li>
+			    <li><a href="/Data_EK/S1/finance/econometrie_HFT/econometrie_HFT_cours/econometrie_fiche.pdf" target="_blank" rel="noopener noreferrer">Fiche Économétrie 1</a></li>
+			    <li><a href="/Data_EK/S1/finance/econometrie_HFT/econometrie_HFT_cours/econometrie_fiche2.pdf" target="_blank" rel="noopener noreferrer">Fiche Économétrie 2</a></li>
+			    <li><a href="/Data_EK/S1/finance/econometrie_HFT/econometrie_HFT_cours/econometrie_fiche_microstructure.pdf" target="_blank" rel="noopener noreferrer">Fiche Microstructure</a></li>
+			  </ul>
+
+			  <br>
+
+			  <li><b>Annales :</b></li>
+			  <ul>
+			    <li><a href="/Data_EK/S1/finance/econometrie_HFT/econometrie_HFT_annales/econometrie_HFT_annale_2021.pdf" target="_blank" rel="noopener noreferrer">Annale 2021</a></li>
+			    <li><a href="/Data_EK/S1/finance/econometrie_HFT/econometrie_HFT_annales/econometrie_HFT_2023.pdf" target="_blank" rel="noopener noreferrer">Annale 2023</a></li>
+			    <li><a href="/Data_EK/S1/finance/econometrie_HFT/econometrie_HFT_annales/econometrie_HFT_annale_2022_rattrapage.pdf" target="_blank" rel="noopener noreferrer">Annale 2022 (rattrapage)</a></li>
+			    <li><a href="/Data_EK/S1/finance/econometrie_HFT/econometrie_HFT_annales/econometrie_HFT_annale_2024.pdf" target="_blank" rel="noopener noreferrer">Annale 2024</a></li>
+			    <li><a href="/Data_EK/S1/finance/econometrie_HFT/econometrie_HFT_annales/econometrie_HFT_annale_2025.pdf" target="_blank" rel="noopener noreferrer">Annale 2025</a></li>
+			    <li><a href="/Data_EK/S1/finance/econometrie_HFT/econometrie_HFT_annales/econometrie_annale_questions.pdf" target="_blank" rel="noopener noreferrer">Questions types</a></li>
+			  </ul>
+			</div>
+
+
+	        <!-- Modélisation stochastique -->
+			<ul>
+			  <h3 id="modelisation_sto" class="ancre-decalage">Modélisation stochastique des produits dérivés (Huyen Pham x Mathieu Garcin)</h3>
+			</ul>
+
+			<div class="container">
+			  <li><b>TD :</b></li>
+			  <ul>
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/modelisation_sto_TD/modelisation_sto_TD1.pdf" target="_blank" rel="noopener noreferrer">TD1</a></li>
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/modelisation_sto_TD/modelisation_sto_TD2.pdf" target="_blank" rel="noopener noreferrer">TD2</a></li>
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/modelisation_sto_TD/modelisation_sto_TD3.pdf" target="_blank" rel="noopener noreferrer">TD3</a></li>
+			  </ul>
+
+			  <br>
+
+			  <li><b>Annales :</b></li>
+			  <ul>
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/modelisation_sto_annales/modelisation_sto_annale_2025.pdf" target="_blank" rel="noopener noreferrer">Annale 2025</a></li>
+			  </ul>
+
+			  <br>
+
+			  <li><b>Supports de cours (Gobet) :</b></li>
+			  <ul>
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/gobet/W1-Slides-IntroCoursMaster2021-22.pdf" target="_blank" rel="noopener noreferrer">Slides Intro Cours Master</a></li>
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/gobet/W1-Slides-ModelisationGBM-PortefeuilleAutofi-2021-22.pdf" target="_blank" rel="noopener noreferrer">Slides GBM et Portefeuille Autofi</a></li>
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/gobet/W1-Notes-ModelisationGBM-PortefeuilleAutofi-2021-22.pdf" target="_blank" rel="noopener noreferrer">Notes GBM et Portefeuille Autofi</a></li>
+
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/gobet/W2_Slides_BlackScholes_2021-22.pdf" target="_blank" rel="noopener noreferrer">Slides Black-Scholes</a></li>
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/gobet/W2_Notes_BlackScholes_2021-22.pdf" target="_blank" rel="noopener noreferrer">Notes Black-Scholes</a></li>
+
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/gobet/W3_Diapo_AlternativeModelling_2021-22.pdf" target="_blank" rel="noopener noreferrer">Diapo Alternative Modelling</a></li>
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/gobet/W3_Notes_AlternativeModelling_2021-22.pdf" target="_blank" rel="noopener noreferrer">Notes Alternative Modelling</a></li>
+
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/gobet/W4-Slides.pdf" target="_blank" rel="noopener noreferrer">Slides Semaine 4</a></li>
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/gobet/W4-Notes.pdf" target="_blank" rel="noopener noreferrer">Notes Semaine 4</a></li>
+
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/gobet/W5_Slides_ModelisationPricingLineaireNonlineaire_2021-22.pdf" target="_blank" rel="noopener noreferrer">Slides Pricing Linéaire/Non Linéaire</a></li>
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/gobet/W5_Notes_ModelisationPricingLineaireNonlineaire_2021-22.pdf" target="_blank" rel="noopener noreferrer">Notes Pricing Linéaire/Non Linéaire</a></li>
+
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/gobet/W6_Slides_ChgtNumeraire_2021-22-reduit.pdf" target="_blank" rel="noopener noreferrer">Slides Changement de Numéraire</a></li>
+
+			    <li><a href="/Data_EK/S1/finance/modelisation_sto/gobet/W7_Slides_MarchesInternationaux_2021-22.pdf" target="_blank" rel="noopener noreferrer">Slides Marchés Internationaux</a></li>
+			  </ul>
+			</div>
+
+
+
+	        <!-- Modèles de taux -->
+			<ul>
+			  <h3 id="modeles_taux" class="ancre-decalage">Modèles de taux (Nicole El Karoui x Caroline Hillairet)</h3>
+			</ul>
+
+			<div class="container">
+			  <li><b>TD :</b></li>
+			  <ul>
+			    <li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_TD/modeles_taux_TD_Nicole_El_Karoui.pdf" target="_blank" rel="noopener noreferrer">TD Nicole El Karoui</a></li>
+			    <li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_TD/modeles_taux_TD_Zorana_Grbac.pdf" target="_blank" rel="noopener noreferrer">TD Zorana Grbac</a></li>
+			  </ul>
+
+			  <br>
+
+			  <li><b>Supports de cours :</b></li>
+			  <ul>
+			    <li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_cours/modeles_taux_Slides_options_LIBOR_Nicole_El_Karoui.pdf" target="_blank" rel="noopener noreferrer">Slides Options LIBOR (El Karoui)</a></li>
+			    <li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_cours/modeles_taux_Slides_Swaption_Nicole_El_Karoui.pdf" target="_blank" rel="noopener noreferrer">Slides Swaption (El Karoui)</a></li>
+			    <li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_cours/modeles_taux_Slides_Swaption_Exo_Nicole_El_Karoui.pdf" target="_blank" rel="noopener noreferrer">Slides Swaption Exo (El Karoui)</a></li>
+			    <li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_cours/modeles_taux_poly_Nicole_El_Karoui.pdf" target="_blank" rel="noopener noreferrer">Polycopié (El Karoui)</a></li>
+			    <li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_cours/modeles_taux_Slides_New_Taux_LIBOR_Nicole_El_Karoui.pdf" target="_blank" rel="noopener noreferrer">Slides New Taux LIBOR (El Karoui)</a></li>
+			    <li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_cours/modeles_taux_Slides_Forward_Nicole_El_Karoui.pdf" target="_blank" rel="noopener noreferrer">Slides Forward (El Karoui)</a></li>
+			    <li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_cours/modeles_taux_livre_Brigo_Mercurio.pdf" target="_blank" rel="noopener noreferrer">Livre Brigo & Mercurio</a></li>
+			    <li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_cours/modeles_taux_cours1_hillairet.pdf" target="_blank" rel="noopener noreferrer">Cours 1 (Hillairet)</a></li>
+			    <li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_cours/modeles_taux_cours2_hillairet.pdf" target="_blank" rel="noopener noreferrer">Cours 2 (Hillairet)</a></li>
+			    <li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_cours/modeles_taux_cours3_hillairet.pdf" target="_blank" rel="noopener noreferrer">Cours 3 (Hillairet)</a></li>
+			    <li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_cours/modeles_taux_fiche.pdf" target="_blank" rel="noopener noreferrer">Fiche de synthèse</a></li>
+			  </ul>
+
+			  <br>
+
+			  <li><b>Annales :</b></li>
+			  <ul>
+			  	<li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_annales/modeles_taux_annale_2023.pdf" target="_blank" rel="noopener noreferrer">Annale 2023</a></li>
+			  	<li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_annales/modeles_taux_annale_2025.pdf" target="_blank" rel="noopener noreferrer">Annale 2025</a></li>
+			    <li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_annales/modeles_taux_annales.pdf" target="_blank" rel="noopener noreferrer">Recueil de corrections d'annales</a></li>
+			    <li><a href="/Data_EK/S1/finance/modeles_taux/modeles_taux_annales/modeles_taux_exams_hillairet_ENSAE.pdf" target="_blank" rel="noopener noreferrer">Exams Hillairet ENSAE</a></li>
+			  </ul>
+			</div>
+
+
+	        <!-- Marchés financiers et Théorie financière -->
+			<ul>
+			  <h3 id="marches_theorie_fin" class="ancre-decalage">Marchés financiers et Théorie financière (Camille De Langhe x Vladimir Lozeve)</h3>
+			</ul>
+
+			<div class="container">
+			  <li><b>Supports de cours :</b></li>
+			  <ul>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_cours/theorie_fin_1_principle_of_macroeconomics.pdf" target="_blank" rel="noopener noreferrer">1. Principle of Macroeconomics</a></li>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_cours/theorie_fin_2_Intoduction_to_Macro_Data.pdf" target="_blank" rel="noopener noreferrer">2. Introduction to Macro Data</a></li>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_cours/theorie_fin_6_Money.pdf" target="_blank" rel="noopener noreferrer">6. Money</a></li>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_cours/theorie_fin_7_IS-LM.pdf" target="_blank" rel="noopener noreferrer">7. IS-LM</a></li>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_cours/theorie_fin_IS-LM_Modele-lineaire.pdf" target="_blank" rel="noopener noreferrer">IS-LM Modèle linéaire</a></li>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_cours/theorie_fin_Debt_Macro_Model.pdf" target="_blank" rel="noopener noreferrer">Debt Macro Model</a></li>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_cours/theorie_fin_Growth_Rates.pdf" target="_blank" rel="noopener noreferrer">Growth Rates</a></li>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_cours/marches_fin_part1.pdf" target="_blank" rel="noopener noreferrer">Marchés financiers - Part 1</a></li>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_cours/marches_fin_part2.pdf" target="_blank" rel="noopener noreferrer">Marchés financiers - Part 2</a></li>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_cours/marches_fin_part3.pdf" target="_blank" rel="noopener noreferrer">Marchés financiers - Part 3</a></li>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_cours/marches_theorie_fin_fiche_macroeconomie.pdf" target="_blank" rel="noopener noreferrer">Fiche macroéconomie</a></li>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_cours/marches_theorie_fin_fiche_marche_de_taux.pdf" target="_blank" rel="noopener noreferrer">Fiche marché de taux</a></li>
+			  </ul>
+
+			  <br>
+
+			  <li><b>Annales :</b></li>
+			  <ul>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_annales/marches_theorie_fin_annales.pdf" target="_blank" rel="noopener noreferrer">Recueil de corrections d’annales</a></li>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_annales/marches_theorie_fin_annales_antoine.pdf" target="_blank" rel="noopener noreferrer">Annales Antoine</a></li>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_annales/marches_theorie_fin_annale_2022.pdf" target="_blank" rel="noopener noreferrer">Annale 2022</a></li>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_annales/marches_theorie_fin_annale_2023.pdf" target="_blank" rel="noopener noreferrer">Annale 2023</a></li>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_annales/marches_theorie_fin_annale_2024.pdf" target="_blank" rel="noopener noreferrer">Annale 2024</a></li>
+			    <li><a href="/Data_EK/S1/finance/marches_theorie_fin/marches_theorie_fin_annales/marches_theorie_fin_annale_2025.pdf" target="_blank" rel="noopener noreferrer">Annale 2025</a></li>
+			  </ul>
+			</div>
+
+
+	        <!-- Mesures de risques et valeurs extrêmes -->
+			<ul>
+			  <h3 id="mesures_risque_valeurs_extremes" class="ancre-decalage">Mesures de risques et valeurs extrêmes (Aurélien Alfonsi x Lokman Abbas-Turki)</h3>
+			</ul>
+
+			<div class="container">
+			  <li><b>Annales :</b></li>
+			  <ul>
+			    <li><a href="/Data_EK/S1/finance/mesures_risque_valeurs_extremes/mesures_risque_valeurs_extremes_annales/mesures_risque_annales.pdf" target="_blank" rel="noopener noreferrer">Mesures de risque – Recueil d’annales</a></li>
+			    <li><a href="/Data_EK/S1/finance/mesures_risque_valeurs_extremes/mesures_risque_valeurs_extremes_annales/valeurs_extremes_annales.pdf" target="_blank" rel="noopener noreferrer">Valeurs extrêmes – Recueil d’annales</a></li>
+			    <li><a href="/Data_EK/S1/finance/mesures_risque_valeurs_extremes/mesures_risque_valeurs_extremes_annales/mesures_risque_valeurs_extremes_annale_2024.pdf" target="_blank" rel="noopener noreferrer">Annale 2024</a></li>
+			  </ul>
+			</div>
+
+
+	        <!-- Modèles de sauts -->
+			<ul>
+			  <h3 id="modeles_sauts" class="ancre-decalage">Modèles de sauts (Thomas Duquesne)</h3>
+			</ul>
+
+			<div class="container">
+			  <li><b>Cours :</b></li>
+			  <ul>
+			    <li><a href="/Data_EK/S1/finance/modeles_sauts/modeles_sauts_cours/modeles_sauts_cours.pdf" target="_blank" rel="noopener noreferrer">Cours complet</a></li>
+			    <li><a href="/Data_EK/S1/finance/modeles_sauts/modeles_sauts_cours/modeles_sauts_poly.pdf" target="_blank" rel="noopener noreferrer">Polycopié</a></li>
+			  </ul>
+
+			  <li><b>Annales :</b></li>
+			  <ul>
+			  	<li><a href="/Data_EK/S1/finance/modeles_sauts/modeles_sauts_annales/modeles_sauts_annale_2025.pdf" target="_blank" rel="noopener noreferrer">Annale 2025</a></li>
+			    <li><a href="/Data_EK/S1/finance/modeles_sauts/modeles_sauts_annales/modeles_sauts_annales.pdf" target="_blank" rel="noopener noreferrer">Recueil de corrections d’annales</a></li>
+			  </ul>
+			</div>
+
+
+	        <!-- Régulation -->
+			<ul>
+			  <h3 id="regulation" class="ancre-decalage">Ce que les crises financières nous enseignent : évolution des pratiques et de la régulation (Nancy Yuk)</h3>
+			</ul>
+
+			<div class="container">
+			  <li><b>Cours :</b></li>
+			  <ul>
+			    <li><a href="/Data_EK/S1/finance/regulation/regulation_cours/regulation_cours_slides.pdf" target="_blank" rel="noopener noreferrer">Slides du cours</a></li>
+			    <li><a href="/Data_EK/S1/finance/regulation/regulation_cours/regulation_cours_etude_cas.pdf" target="_blank" rel="noopener noreferrer">Étude de cas</a></li>
+			    <li><a href="/Data_EK/S1/finance/regulation/regulation_cours/regulation_fiche.pdf" target="_blank" rel="noopener noreferrer">Fiche de synthèse</a></li>
+			  </ul>
+
+			  <li><b>Annales :</b></li>
+			  <ul>
+			    <li><a href="/Data_EK/S1/finance/regulation/regulation_annales/regulation_annale_2021.pdf" target="_blank" rel="noopener noreferrer">Annale 2021</a></li>
+			    <li><a href="/Data_EK/S1/finance/regulation/regulation_annales/regulation_annale_2025.pdf" target="_blank" rel="noopener noreferrer">Annale 2025</a></li>
+			  </ul>
+			</div>
+    </ul>
+	</div>
+
+    <footer>
+        Théo Jalabert | Tous droits réservés © 2025
+    </footer>
+</body>
+</html>
+
+
+
